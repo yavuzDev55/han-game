@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwx55t06n2r5o"]
+
+[ext_resource type="Texture2D" uid="uid://df6hkb22jyvce" path="res://icon.svg" id="1_ys6lj"]
+[ext_resource type="Script" path="res://scripts/dialogCode.gd" id="2_1rcwq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.236
+anchor_right = 1.0
+anchor_bottom = 0.415
+offset_left = 0.127991
+offset_bottom = 0.0799866
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Hi! How can I help You?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(137, 138)
+scale = Vector2(2.12353, 2.12353)
+texture = ExtResource("1_ys6lj")
+script = ExtResource("2_1rcwq")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.426
+anchor_right = 1.0
+anchor_bottom = 0.631
+offset_top = -0.0480042
+offset_right = 3.0
+offset_bottom = 0.111969
+theme_override_font_sizes/font_size = 30
+text = "I am looking for someone."
+alignment = 0
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.636
+anchor_right = 1.0
+anchor_bottom = 0.841
+offset_top = -0.128021
+offset_right = 3.0
+offset_bottom = 0.0319824
+theme_override_font_sizes/font_size = 30
+text = "Do you know GD Man?"
+alignment = 0
+
+[connection signal="pressed" from="Button" to="Icon" method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="Icon" method="_on_button_2_pressed"]
