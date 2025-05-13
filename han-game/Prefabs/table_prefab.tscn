@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dua6tl0ed2dhp"]
+
+[ext_resource type="Script" uid="uid://b0w720snv5kex" path="res://Scripts/Han/table_controller.gd" id="1_wikt1"]
+
+[node name="TablePrefab" type="Node2D"]
+script = ExtResource("1_wikt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

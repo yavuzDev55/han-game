@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxbcy082y3lpt"]
+
+[ext_resource type="Script" uid="uid://kcen74bl45s5" path="res://Scripts/Han/table_grid_cell.gd" id="1_iy7bq"]
+[ext_resource type="Texture2D" uid="uid://dsoccy2u5ngbs" path="res://Assets/gridtile2.png" id="2_gnm48"]
+[ext_resource type="Script" uid="uid://clk4ksqclwtpl" path="res://Scripts/Han/chair_controller.gd" id="3_drbnx"]
+[ext_resource type="Texture2D" uid="uid://bwxny1r1voos4" path="res://Assets/Tables/chairV.png" id="4_qbvt3"]
+[ext_resource type="Texture2D" uid="uid://c4amomtuxeanb" path="res://Assets/Tables/chairH.png" id="5_tm7rf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0eia"]
+size = Vector2(16, 16)
+
+[node name="TableGridCell" type="Node2D" node_paths=PackedStringArray("chairControllers")]
+script = ExtResource("1_iy7bq")
+chairControllers = [NodePath("Chairs/ChairControllerTop"), NodePath("Chairs/ChairControllerRight"), NodePath("Chairs/ChairControllerBottom"), NodePath("Chairs/ChairControllerLeft")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -50
+texture = ExtResource("2_gnm48")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_s0eia")
+
+[node name="Chairs" type="Node2D" parent="."]
+
+[node name="ChairControllerTop" type="Node2D" parent="Chairs"]
+position = Vector2(0, -12)
+script = ExtResource("3_drbnx")
+dir = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Chairs/ChairControllerTop"]
+texture = ExtResource("4_qbvt3")
+region_enabled = true
+region_rect = Rect2(36, 151, 8, 7)
+
+[node name="ChairControllerRight" type="Node2D" parent="Chairs"]
+position = Vector2(12, 1)
+script = ExtResource("3_drbnx")
+dir = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Chairs/ChairControllerRight"]
+texture = ExtResource("5_tm7rf")
+region_enabled = true
+region_rect = Rect2(49, 144, 6, 14)
+
+[node name="ChairControllerBottom" type="Node2D" parent="Chairs"]
+position = Vector2(0, 8)
+script = ExtResource("3_drbnx")
+dir = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Chairs/ChairControllerBottom"]
+texture = ExtResource("4_qbvt3")
+region_enabled = true
+region_rect = Rect2(36, 133, 8, 13)
+
+[node name="ChairControllerLeft" type="Node2D" parent="Chairs"]
+position = Vector2(-12, 0)
+script = ExtResource("3_drbnx")
+dir = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Chairs/ChairControllerLeft"]
+texture = ExtResource("5_tm7rf")
+region_enabled = true
+region_rect = Rect2(57, 128, 6, 14)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

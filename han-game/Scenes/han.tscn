@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://bdlo7p4matm7y"]
+
+[ext_resource type="Script" uid="uid://bjec5gwo7xprr" path="res://Scripts/Han/table_grid_manager.gd" id="1_rhard"]
+[ext_resource type="PackedScene" uid="uid://cxbcy082y3lpt" path="res://Prefabs/table_grid_cell.tscn" id="2_gchrw"]
+[ext_resource type="PackedScene" uid="uid://dua6tl0ed2dhp" path="res://Prefabs/table_prefab.tscn" id="3_lxy3d"]
+[ext_resource type="Script" uid="uid://dyr4q4h3gs72f" path="res://Scripts/Han/table_panel_controller.gd" id="4_ahag2"]
+[ext_resource type="Script" uid="uid://biein40uco1v8" path="res://Scripts/Han/table_data.gd" id="5_hr8mw"]
+[ext_resource type="Texture2D" uid="uid://due67vlkg1jat" path="res://Assets/Tables/table1-1.png" id="6_nfwd0"]
+[ext_resource type="Texture2D" uid="uid://d2ix81x3vu2ar" path="res://Assets/Tables/table2-1.png" id="7_vlviy"]
+[ext_resource type="Texture2D" uid="uid://cx5pewmlt1me8" path="res://Assets/Tables/table1-2.png" id="8_lolq6"]
+[ext_resource type="Texture2D" uid="uid://dhvn7ni6vcyfn" path="res://Assets/Tables/table2-2.png" id="9_t6tm0"]
+[ext_resource type="PackedScene" uid="uid://xsqf1axbnyn" path="res://Prefabs/table_choose_panel.tscn" id="10_agao5"]
+
+[sub_resource type="Resource" id="Resource_buihx"]
+script = ExtResource("5_hr8mw")
+tableWidth = 1
+tableHeight = 1
+tableName = "1-1"
+tableSprite = ExtResource("6_nfwd0")
+tableCount = 1
+metadata/_custom_type_script = "uid://biein40uco1v8"
+
+[sub_resource type="Resource" id="Resource_q7e1f"]
+script = ExtResource("5_hr8mw")
+tableWidth = 2
+tableHeight = 1
+tableName = "2-1"
+tableSprite = ExtResource("7_vlviy")
+tableCount = 1
+metadata/_custom_type_script = "uid://biein40uco1v8"
+
+[sub_resource type="Resource" id="Resource_s6dw5"]
+script = ExtResource("5_hr8mw")
+tableWidth = 1
+tableHeight = 2
+tableName = "1-2"
+tableSprite = ExtResource("8_lolq6")
+tableCount = 1
+metadata/_custom_type_script = "uid://biein40uco1v8"
+
+[sub_resource type="Resource" id="Resource_ijttr"]
+script = ExtResource("5_hr8mw")
+tableWidth = 2
+tableHeight = 2
+tableName = "2-2"
+tableSprite = ExtResource("9_t6tm0")
+tableCount = 1
+metadata/_custom_type_script = "uid://biein40uco1v8"
+
+[sub_resource type="LabelSettings" id="LabelSettings_hokbf"]
+font_size = 24
+
+[node name="Han" type="Node2D"]
+
+[node name="TableGridManager" type="Node2D" parent="."]
+position = Vector2(-82, -1)
+script = ExtResource("1_rhard")
+width = 8
+height = 4
+cellPrefab = ExtResource("2_gchrw")
+tablePrefab = ExtResource("3_lxy3d")
+metadata/_custom_type_script = "uid://bjec5gwo7xprr"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6.5, 6.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TablePanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("tablePanels")]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_ahag2")
+tablePanels = [NodePath("TableChoosePanel"), NodePath("TableChoosePanel2"), NodePath("TableChoosePanel3"), NodePath("TableChoosePanel4")]
+tableDatas = Array[ExtResource("5_hr8mw")]([SubResource("Resource_buihx"), SubResource("Resource_q7e1f"), SubResource("Resource_s6dw5"), SubResource("Resource_ijttr")])
+
+[node name="Label" type="Label" parent="CanvasLayer/TablePanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 3.05176e-05
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "TablePanel"
+label_settings = SubResource("LabelSettings_hokbf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TableChoosePanel" parent="CanvasLayer/TablePanel" instance=ExtResource("10_agao5")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = -260.0
+offset_right = 158.0
+offset_bottom = -110.0
+
+[node name="TableChoosePanel2" parent="CanvasLayer/TablePanel" instance=ExtResource("10_agao5")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = -91.0
+offset_right = 158.0
+offset_bottom = 59.0
+
+[node name="TableChoosePanel3" parent="CanvasLayer/TablePanel" instance=ExtResource("10_agao5")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = 81.0
+offset_right = 158.0
+offset_bottom = 231.0
+
+[node name="TableChoosePanel4" parent="CanvasLayer/TablePanel" instance=ExtResource("10_agao5")]
+layout_mode = 1
+offset_left = -142.0
+offset_top = 260.0
+offset_right = 158.0
+offset_bottom = 410.0
