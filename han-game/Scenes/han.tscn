@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdlo7p4matm7y"]
+[gd_scene load_steps=17 format=3 uid="uid://bdlo7p4matm7y"]
 
 [ext_resource type="Script" uid="uid://bjec5gwo7xprr" path="res://Scripts/Han/table_grid_manager.gd" id="1_rhard"]
 [ext_resource type="PackedScene" uid="uid://cxbcy082y3lpt" path="res://Prefabs/table_grid_cell.tscn" id="2_gchrw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cx5pewmlt1me8" path="res://Assets/Tables/table1-2.png" id="8_lolq6"]
 [ext_resource type="Texture2D" uid="uid://dhvn7ni6vcyfn" path="res://Assets/Tables/table2-2.png" id="9_t6tm0"]
 [ext_resource type="PackedScene" uid="uid://xsqf1axbnyn" path="res://Prefabs/table_choose_panel.tscn" id="10_agao5"]
+[ext_resource type="Texture2D" uid="uid://caidw42xlstqh" path="res://Assets/customer.png" id="11_gchrw"]
 
 [sub_resource type="Resource" id="Resource_buihx"]
 script = ExtResource("5_hr8mw")
@@ -114,3 +115,9 @@ offset_left = -142.0
 offset_top = 260.0
 offset_right = 158.0
 offset_bottom = 410.0
+
+[node name="Customer" type="Sprite2D" parent="."]
+position = Vector2(55, -24)
+texture = ExtResource("11_gchrw")
+region_enabled = true
+region_rect = Rect2(130, 0, 12, 19)
