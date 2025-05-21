@@ -121,3 +121,5 @@ position = Vector2(55, -24)
 texture = ExtResource("11_gchrw")
 region_enabled = true
 region_rect = Rect2(130, 0, 12, 19)
+
+[node name="Node" type="Node" parent="."]
