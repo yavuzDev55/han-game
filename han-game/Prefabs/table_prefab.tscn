@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dua6tl0ed2dhp"]
+[gd_scene load_steps=3 format=3 uid="uid://dua6tl0ed2dhp"]
 
 [ext_resource type="Script" uid="uid://b0w720snv5kex" path="res://Scripts/Han/table_controller.gd" id="1_wikt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wikt1"]
 
 [node name="TablePrefab" type="Node2D"]
 script = ExtResource("1_wikt1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+scale = Vector2(0.792162, 0.792162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_wikt1")
