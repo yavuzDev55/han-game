@@ -5,10 +5,13 @@ extends Panel
 @export var tableDatas: Array[TableData] = []
 @export var chosenTableData: TableData
 
+signal chose_table_signal
+
 func _ready():
 	attach_panel_properties()
 	chosenTableData = tableDatas[0]
-	TableGridManager.instance.chosenTableData = chosenTableData
+	emit_signal("chose_table_signal", chosenTableData)
+	
 
 
 func attach_panel_properties():
@@ -28,4 +31,4 @@ func attach_panel_properties():
 	
 func _on_button_pressed(button_id):
 	chosenTableData = tableDatas[button_id]
-	TableGridManager.instance.chosenTableData = chosenTableData
+	emit_signal("chose_table_signal", chosenTableData)

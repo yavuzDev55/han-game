@@ -2,7 +2,7 @@ extends Node2D
 
 class_name TableController
 
-@export var cells: Array[TableGridCell]
+@export var cells: Array[CellController]
 #@export var customers
 
 var table_sprite: Sprite2D

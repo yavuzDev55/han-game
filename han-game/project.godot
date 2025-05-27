@@ -15,6 +15,10 @@ run/main_scene="uid://bdlo7p4matm7y"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LayerEnums="*res://Scripts/Enums/layer_Enums.gd"
+
 [display]
 
 window/size/viewport_width=1920
