@@ -2,8 +2,7 @@ extends Node2D
 
 class_name CellController
 
-var order_x: int
-var order_y: int
+var order: Vector2
 
 @export var chairControllers: Array[ChairController]
 var chairSprites: Array[Sprite2D] = []
@@ -19,12 +18,7 @@ func _ready():
 
 #Attaching cell pos
 func init(x_pos: int, y_pos: int):
-	self.order_x = x_pos
-	self.order_y = y_pos
-	
-func get_cell_pos() -> Vector2:
-	var cell_pos = Vector2(order_x, order_y)
-	return cell_pos
+	self.order = Vector2(x_pos, y_pos)
 	
 func EditSortingOrderOfChairs():
 	if(table == null): return

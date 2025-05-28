@@ -65,17 +65,19 @@ func place_table(cell_pos: Vector2):
 		return
 	var table = TABLE_PREFAB.instantiate()
 	table_parent.add_child(table)
-	table.z_index = 50 + (cell_pos.y + 1)
+	table.z_index = 50 + (cell_pos.y + 1) * 5
 	table.attach_props(table_data.tableSprite)
 	var pos = cell_pos * 16 + Vector2(8, 8)
 	pos += Vector2((table_data.tableWidth - 1) * .5 * pixelSize, (table_data.tableHeight - 1) * .5 * pixelSize)
 	table.position = pos
 	generate_cells(cell_pos, table)
 	
+	update_whole_chairs()
+	
 func delete_table(cell_pos: Vector2):
 	var table: TableController
 	for cell in active_cells:
-		if cell.get_cell_pos() == cell_pos:
+		if cell.order == cell_pos:
 			table = cell.table
 	
 	var cells: Array[CellController] = table.cells
@@ -83,7 +85,9 @@ func delete_table(cell_pos: Vector2):
 		active_cells.erase(cell)
 		cell.queue_free()
 		
-		layers[2].erase_cell(cell.get_cell_pos())
+		layers[3].erase_cell(cell.order)
+	
+	update_whole_chairs()
 	
 	table.queue_free()
 	
@@ -163,13 +167,18 @@ func generate_cells(cell_pos: Vector2, table: TableController):
 			active_cells.append(cell_controller)
 			table.cells.append(cell_controller)
 			
-			var occupancies: Array[bool]
-			occupancies.append(is_occupy_cell(new_cell_pos + Vector2(0, -1))) #up
-			occupancies.append(is_occupy_cell(new_cell_pos + Vector2(1, 0)))  #right
-			occupancies.append(is_occupy_cell(new_cell_pos + Vector2(0, 1)))  #down
-			occupancies.append(is_occupy_cell(new_cell_pos + Vector2(-1, 0))) #left
-			cell_controller.show_proper_chairs(occupancies)
-			
+func attach_occupant_chair(cell_pos: Vector2) -> Array[bool]:
+	var occupancies: Array[bool]
+	occupancies.append(is_occupy_cell(cell_pos + Vector2(0, -1))) #up
+	occupancies.append(is_occupy_cell(cell_pos + Vector2(1, 0))) #right
+	occupancies.append(is_occupy_cell(cell_pos + Vector2(0, 1))) #down
+	occupancies.append(is_occupy_cell(cell_pos + Vector2(-1, 0))) #left
+	return occupancies
+
+func update_whole_chairs():
+	for cell in active_cells:
+		cell.show_proper_chairs(attach_occupant_chair(cell.order))
+		
 func draw_table_preview(cell_pos: Vector2):
 	if can_place_table(cell_pos) == false :
 		if preview_table != null:
