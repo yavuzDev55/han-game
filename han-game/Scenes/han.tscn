@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dhvn7ni6vcyfn" path="res://Assets/Tables/table2-2.png" id="9_t6tm0"]
 [ext_resource type="PackedScene" uid="uid://xsqf1axbnyn" path="res://Prefabs/table_choose_panel.tscn" id="10_agao5"]
 [ext_resource type="Texture2D" uid="uid://caidw42xlstqh" path="res://Assets/customer.png" id="11_gchrw"]
-[ext_resource type="Script" uid="uid://bcarypr7tn8u0" path="res://Scripts/Han/tilemap_scene_controller.gd" id="11_lxy3d"]
+[ext_resource type="Script" path="res://Scripts/Han/tilemap_scene_controller.gd" id="11_lxy3d"]
 [ext_resource type="PackedScene" uid="uid://b6jlf2hadvbbv" path="res://Prefabs/hancı.tscn" id="12_lxy3d"]
 [ext_resource type="Texture2D" uid="uid://2mejhg7rjvi5" path="res://Assets/tilemapTest.png" id="13_hr8mw"]
 [ext_resource type="Texture2D" uid="uid://cst1ykmalghuf" path="res://Assets/tilesetAppearance.png" id="14_nfwd0"]
@@ -167,11 +167,10 @@ region_rect = Rect2(130, 0, 12, 19)
 [node name="Hancı" parent="." instance=ExtResource("12_lxy3d")]
 position = Vector2(-82, -24)
 
-[node name="TileMapManager" type="TileMap" parent="." node_paths=PackedStringArray("layers", "table_parent", "cell_parent")]
+[node name="TileMapManager" type="TileMap" parent="." node_paths=PackedStringArray("table_parent", "cell_parent")]
 tile_set = SubResource("TileSet_lolq6")
 format = 2
 script = ExtResource("11_lxy3d")
-layers = [NodePath("Ground"), NodePath("Collider"), NodePath("Grid"), NodePath("Table")]
 table_parent = NodePath("../TableParent")
 cell_parent = NodePath("../CellParent")
 
