@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpxgfr8at84t0"]
+[gd_scene load_steps=9 format=3 uid="uid://dpxgfr8at84t0"]
 
 [ext_resource type="Texture2D" uid="uid://ciipefphe13tj" path="res://Assets/NPC/han_game_enemy_prototip.png" id="1_leowk"]
 [ext_resource type="Script" uid="uid://b258g7nas032c" path="res://Scripts/enemy.gd" id="1_lgw76"]
@@ -6,13 +6,28 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgw76"]
 size = Vector2(12, 23)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgw76"]
+atlas = ExtResource("1_leowk")
+region = Rect2(0, 48, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4g6b"]
 atlas = ExtResource("1_leowk")
 region = Rect2(0, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_30yes"]
+atlas = ExtResource("1_leowk")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7q57"]
+atlas = ExtResource("1_leowk")
+region = Rect2(0, 72, 24, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_30yes"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgw76")
+}],
 "loop": true,
 "name": &"down_attack",
 "speed": 5.0
@@ -25,12 +40,18 @@ animations = [{
 "name": &"down_idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30yes")
+}],
 "loop": true,
 "name": &"down_preparation",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7q57")
+}],
 "loop": true,
 "name": &"down_stan",
 "speed": 5.0
@@ -45,5 +66,5 @@ shape = SubResource("RectangleShape2D_lgw76")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_30yes")
-animation = &"down_idle"
+animation = &"down_stan"
 autoplay = "down_idle"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://17yia5khfl2q"]
+
+[ext_resource type="PackedScene" uid="uid://b6jlf2hadvbbv" path="res://Prefabs/hancı.tscn" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://dpxgfr8at84t0" path="res://Prefabs/enemy.tscn" id="2_wrm1d"]
+
+[node name="game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(118, 40)
+zoom = Vector2(5, 5)
+
+[node name="Hancı" parent="." instance=ExtResource("1_qxrlw")]
+position = Vector2(64, 47)
+
+[node name="Enemy" parent="." instance=ExtResource("2_wrm1d")]
+position = Vector2(118, 40)
